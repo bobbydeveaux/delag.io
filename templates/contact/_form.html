@@ -1,0 +1,61 @@
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.1.39.min.js"></script>
+<script>
+    var accessKeyId     = '';
+    var secretAccessKey = '';
+    var sessionToken    = '';
+    // Initialize the Amazon Cognito credentials provider
+    AWS.config.region = 'eu-west-1'; // Region
+    AWS.config.credentials = new AWS.CognitoIdentityCredentials({
+        IdentityPoolId: 'eu-west-1:dfd1bb82-2aeb-4af0-a915-f7eb28233011',
+    });
+
+    // Make the call to obtain credentials
+    AWS.config.credentials.get(function(){
+        // Credentials will be available when this function is called.
+        accessKeyId     = AWS.config.credentials.accessKeyId;
+        secretAccessKey = AWS.config.credentials.secretAccessKey;
+        sessionToken    = AWS.config.credentials.sessionToken;
+    });
+
+    $(document).ready(function(){
+        $( "#contact-form" ).submit(function( event ) {
+            event.preventDefault();
+            var name     = $('#contact-form input[name=name]').val();
+            var email    = $('#contact-form input[name=email]').val();
+            var phone    = $('#contact-form input[name=contactNumber]').val();
+            var content  = $('#contact-form textarea[name=content]').val();
+            var heardvia = $('#contact-form select[name=heardvia]').find(':selected').text();
+            var services = new Array();
+            $.each($("#contact-form input[name^=require]:checked"), function() {
+                services.push($(this).val());
+            });
+
+            //console.log(name, email, phone, content, heardvia, services, accessKeyId);
+
+            var kinesis = new AWS.Kinesis({
+                region: 'eu-west-1',
+                accessKeyId: accessKeyId,
+                secretAccessKey: secretAccessKey,
+                sessionToken: sessionToken
+            });
+
+            var params = {
+                Data: '{"fullname" : "' + name + '", "email" : "' + email + '", "phone" : "' + phone + '", "content" : "' + content + '", "heardvia" : "' + heardvia + '", "services" : "' + services.toString() + '"}',
+                PartitionKey: "1", /* required */
+                StreamName: "delagio-contact-form", /* required */
+            };
+
+            // console.log(params);
+            kinesis.putRecord(params, function(err, data) {
+                if (err) {
+                    console.log(err, err.stack); // an error occurred
+                }
+                else {
+                    console.log(data);           // successful response
+                    window.location.href = "/thanks.html";
+                }
+            });
+
+        });
+    });
+</script>

@@ -1,0 +1,25 @@
+{
+  "name": "travis-test",
+  "version": "0.0.1",
+  "authors": [
+    "Bobby DeVeaux <bobby@delag.io>"
+  ],
+  "moduleType": [
+    "amd",
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-official": "~3.3.5",
+    "fontawesome": "~4.3.0",
+    "jquery": "~2.1.4"
+  },
+  "homepage": "https://github.com/bobbydeveaux/delag.io"
+}

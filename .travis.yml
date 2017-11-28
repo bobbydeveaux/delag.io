@@ -1,0 +1,20 @@
+sudo: false
+before_script:
+- gem install sass
+- npm install -g gulp
+- npm install
+script:
+- gulp bower
+- gulp
+deploy:
+  provider: s3
+  access_key_id: AKIAJ6X4LPAAM3MPNULQ
+  secret_access_key:
+    secure: LUbPJOvYX9/pN4TZvzCCzv/RWirHJeEsBd7hHNXzCTGadH3rYeoY5YFfOdfSCIvS5yj7XUbMUs0tnBPzGaMUMcL4pDFw6vExpx9QfhYwEZZGqFFERJY/Trjg9ZfLQ0aA1Of0BpqPhNcJqWkhzcDcM72P+FmaWhdooSYdNXMZFTuLGIyjiUndHWbC/QkaREzk1b8C1lwLDL8lJg49u83j60PdgOx2s+VqRRKiJTlOg3b7H3BW+DqEFF7WRVA3rpz65OtLppVzxDi9Mn472mERQdJflkY6JhBiIkay+fYWsWqpXKX4EbS5RaR4YeucJaKJbI61bXQ/6Hi58qKgs9wHJfkZgIxeYht12AnQIwnSKhuog6n6bZpbVW0XojKa3X0FyJ/5ygO9MP2o0ad0ARnPwFF+AHn0/i6IkpCQNNG5lnqepxDK+yQ28kgW8mFwegHBrQV/p9BVZO0o4AjqOuWdZiZd2S7aIGA3QPPh/EaJ4HXztDMKcVeLxnbykT6FB8JcIUm2HD/i/bDCSs3Ktzz6XbnCPT2e/bz2xBOZDe1U5XpN39KzCE0K1oz3WaHBRY2oEayeZ7Ep8mdkwrXq9TGOdCZNaoOONPto7WrEfUvADbym2iRMSIo9cjFs6QhOD96FAAs6xlZlcrl1IxG0fRQVYY/Pi2CMN/MQ9662uwA6B+Q=
+  bucket: "delag.io"
+  region: eu-west-1
+  skip_cleanup: true
+  local-dir: web
+  acl: public_read
+  on:
+    repo: bobbydeveaux/delag.io

@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>@@title - Delagio</title>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Delagio is an online digital agency creating modern websites using the latest technology. Bespoke software development across the Yorkshire, Lincolnshire and Midlands regions.">
+        <meta name="keywords" content="Websites, online, media, monetisation, cpa, cpc, technology">
+
+        <meta name="robots" content="index,follow" />
+        <meta name="copyright" content="Delagio" />
+
+        <meta property="og:title" content="@@title" />
+        <meta property="og:site_name" content="Delagio"/>
+        <meta property="og:locale" content="en_GB" />
+        <meta property="og:image" content="https://delag.io/dist/images/logo-resized.png" />
+
+        <meta property="og:description" content="Delagio is an online digital agency creating modern websites using the latest technology. Bespoke software development across the Yorkshire, Lincolnshire and Midlands regions." />
+
+        <script src="/dist/js/skel-layers.js"></script>
+        <script src="/dist/js/jquery.min.js"></script>
+        <script src="/dist/js/skel.js"></script>
+        <script src="/dist/js/skel-layers.js"></script>
+        <script src="/dist/js/iontemplate.js"></script>
+
+        <script type="text/javascript" async defer src="https://apis.google.com/js/platform.js?publisherid=117542734487170790123"></script>
+
+        <noscript>
+            <link rel="stylesheet" href="static/css/skel.css" />
+            <link rel="stylesheet" href="static/css/style.css" />
+            <link rel="stylesheet" href="static/css/style-xlarge.css" />
+        </noscript>
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            ga('create', 'UA-57511106-1', 'auto');
+            ga('send', 'pageview');
+        </script>
+
+        @@if (name === 'contact') {
+            @@include('contact/_form.html')
+        }
+
+        @@if (name === 'thanks') {
+            @@include('thanks/_tracking.html')
+        }
+    </head>
+
+    <body id="top">
+
+
+        <header id="header" class="skel-layers-fixed">
+            <h1>
+                <a href="/"><img style="height: 40px;" src="/dist/images/logo-resized.png" /></a>
+            </h1>
+            <nav id="nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/team.html">Meet The Team</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html">Contact</a></li>
+                    <li><a href="/jobs.html">Jobs</a></li>
+                </ul>
+            </nav>
+        </header>
